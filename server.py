@@ -1,3 +1,7 @@
+"""
+Flask server for the Emotion Detection application.
+Exposes a REST endpoint that analyzes text and returns emotion scores.
+"""
 from flask import Flask, request, render_template
 from EmotionDetection import emotion_detector
 
@@ -6,6 +10,7 @@ app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
 def emotion_detector_route():
+    """Analyze the given text and return a formatted emotion detection result."""
     text_to_analyze = request.args.get("textToAnalyze")
 
     result = emotion_detector(text_to_analyze)
@@ -34,6 +39,7 @@ def emotion_detector_route():
 
 @app.route("/")
 def render_index_page():
+    """Render the main index page of the application."""
     return render_template('index.html')
 
 
